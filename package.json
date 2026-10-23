@@ -1,0 +1,14 @@
+{
+  "name": "charkhoone",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "«چرخونه» — Persian spin-the-wheel / random-picker PWA (offline, no ads, fair CSPRNG)",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "e2e": "node tests/e2e.mjs",
+    "serve": "cd .. && python3 -m http.server 8799",
+    "icons": "node scripts/icons.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

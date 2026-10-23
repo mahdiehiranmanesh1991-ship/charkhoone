@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#1a0b2e">
+<meta name="description" content="چرخونه — گردونه‌ی شانس، تاس و انتخاب تصادفی منصفانه؛ اختصاصی، آفلاین، بدون تبلیغ و بدون ردیابی.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="چرخونه">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/app.css">
+<title>چرخونه — گردونه‌ی شانس و تاس</title>
+</head>
+<body data-theme="gold">
+<div class="bg-orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+<div id="app">
+  <!-- Library -->
+  <section class="screen active" id="scr-lib" data-testid="library">
+    <header class="hero">
+      <div class="brand">
+        <canvas class="logo-wheel" id="logoWheel" aria-hidden="true"></canvas>
+        <div>
+          <h1>چرخونه</h1>
+          <p class="greet" id="greet" data-testid="greet"></p>
+        </div>
+      </div>
+      <div class="pills">
+        <span class="pill coin" id="coinPill" data-testid="coins" title="سکه‌ها">🪙 <b>0</b></span>
+        <span class="pill fire" id="streakPill" title="روزهای پشت سر هم">🔥 <b>0</b></span>
+      </div>
+    </header>
+    <div class="cta-row">
+      <button class="cta quick" id="btnQuick" data-testid="quick"><i>⚡</i><span>چرخونه‌ی سریع</span></button>
+      <button class="cta alt" id="btnTpl" data-testid="templates"><i>🧩</i><span>الگوها</span></button>
+    </div>
+    <div class="search"><input id="search" type="search" placeholder="جستجو در گردونه‌ها…" data-testid="search" aria-label="جستجو"></div>
+    <div class="chips" id="tagChips" data-testid="tags"></div>
+    <div class="cards" id="cards" data-testid="cards"></div>
+    <div class="empty" id="emptyLib" hidden>گردونه‌ای پیدا نشد 🤷‍♀️</div>
+    <div class="spacer"></div>
+    <button class="fab" id="fabNew" data-testid="new-wheel" aria-label="گردونه‌ی جدید">＋</button>
+  </section>
+
+  <!-- Spin -->
+  <section class="screen" id="scr-spin" data-testid="spin-screen">
+    <div class="topbar">
+      <button class="icon-btn" data-back aria-label="بازگشت" data-testid="back">›</button>
+      <div class="ttl" id="spinTitle"></div>
+      <button class="icon-btn" id="btnStats" aria-label="آمار" data-testid="stats">📊</button>
+      <button class="icon-btn" id="btnEdit" aria-label="ویرایش" data-testid="edit">✏️</button>
+    </div>
+    <div class="spin-sub" id="spinSub"></div>
+    <div class="wheel-wrap" id="wheelWrap">
+      <canvas id="wheel" data-testid="wheel" aria-label="گردونه؛ برای چرخاندن بکشید یا ضربه بزنید" role="img"></canvas>
+    </div>
+    <button class="spin-btn" id="btnSpin" data-testid="spin"><span>بچرخون!</span></button>
+    <p class="hint" id="spinHint">با انگشت بکش و رها کن، یا ضربه بزن 👆</p>
+    <div class="toggles" id="spinToggles"></div>
+    <div class="last" id="lastResults" data-testid="last-results"></div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Editor -->
+  <section class="screen" id="scr-edit" data-testid="editor">
+    <div class="topbar">
+      <button class="icon-btn" data-back aria-label="بازگشت">›</button>
+      <div class="ttl">ویرایش گردونه</div>
+      <button class="btn small primary" id="btnEditDone" data-testid="edit-done">✓ تمام</button>
+    </div>
+    <div class="edit-body" id="editBody"></div>
+  </section>
+
+  <!-- Templates -->
+  <section class="screen" id="scr-tpl" data-testid="templates-screen">
+    <div class="topbar">
+      <button class="icon-btn" data-back aria-label="بازگشت">›</button>
+      <div class="ttl">الگوها و سازنده‌ها</div><span class="icon-btn ghost"></span>
+    </div>
+    <div class="tpl-grid" id="tplGrid"></div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Tools: dice / coin / teams -->
+  <section class="screen" id="scr-tools" data-testid="tools">
+    <div class="topbar"><span class="icon-btn ghost"></span><div class="ttl">تاس، سکه و گروه‌بندی</div><span class="icon-btn ghost"></span></div>
+    <div class="tools-body" id="toolsBody"></div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Challenges -->
+  <section class="screen" id="scr-ch" data-testid="challenges">
+    <div class="topbar"><span class="icon-btn ghost"></span><div class="ttl">چالش‌ها و جایزه‌ها</div><span class="icon-btn ghost"></span></div>
+    <div class="ch-body" id="chBody"></div>
+    <div class="spacer"></div>
+  </section>
+
+  <!-- Settings -->
+  <section class="screen" id="scr-set" data-testid="settings">
+    <div class="topbar"><span class="icon-btn ghost"></span><div class="ttl">تنظیمات</div><span class="icon-btn ghost"></span></div>
+    <div class="set-body" id="setBody"></div>
+    <div class="spacer"></div>
+  </section>
+
+  <nav class="tabbar" id="tabbar" data-testid="tabbar">
+    <button data-tab="scr-lib" class="on" data-testid="tab-lib"><i>🎡</i><span>چرخونه‌ها</span></button>
+    <button data-tab="scr-tools" data-testid="tab-tools"><i>🎲</i><span>تاس و سکه</span></button>
+    <button data-tab="scr-ch" data-testid="tab-ch"><i>🏆</i><span>چالش‌ها</span></button>
+    <button data-tab="scr-set" data-testid="tab-set"><i>⚙️</i><span>تنظیمات</span></button>
+  </nav>
+</div>
+
+<div class="reveal" id="reveal" hidden data-testid="reveal">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="reveal-card" id="revealCard"></div>
+</div>
+<div class="sheet-wrap" id="sheet" hidden><div class="sheet" id="sheetBody" role="dialog" aria-modal="true"></div></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<input type="file" id="fileImport" accept="application/json,.json" hidden>
+<input type="file" id="fileImg" accept="image/*" hidden>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

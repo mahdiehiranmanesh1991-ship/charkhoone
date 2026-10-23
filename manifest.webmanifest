@@ -1,0 +1,19 @@
+{
+  "name": "چرخونه — گردونه‌ی شانس مهدیه",
+  "short_name": "چرخونه",
+  "description": "گردونه‌ی شانس، تاس و سکه‌ی شخصی؛ فارسی، آفلاین، بدون تبلیغ و بدون ردیابی.",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0205",
+  "theme_color": "#2a0610",
+  "categories": ["entertainment", "games", "utilities"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
